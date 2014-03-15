@@ -100,7 +100,8 @@ map <leader>t :CtrlP<cr>
 ":color grb256
 set t_Co=256
 set background=dark
-colorscheme grb256
+" colorscheme grb256
+colorscheme jellybeans
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
