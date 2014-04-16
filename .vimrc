@@ -55,6 +55,11 @@ set backspace=indent,eol,start
 set showcmd
 set wildmode=longest,list
 set wildmenu
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/_site/*
+
+" Fix slow O inserts
+:set timeout timeoutlen=1000 ttimeoutlen=100
 
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
@@ -69,6 +74,25 @@ set showtabline=2                      "
 
 let mapleader = ","
 
+" """"""""
+" AutoCmds
+" """"""""
+augroup vimrcEx
+    autocmd!
+    autocmd FileType text setlocal textwidth=78
+
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+
+    autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
+    autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
+
+    " Don't syntax highlight markdown because it's often wrong
+    autocmd! FileType mkd setlocal syn=off
+
+augroup END
 
 " """"""""
 " Mappings
@@ -88,9 +112,21 @@ map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
 
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+
 
 " ControlP binding
 map <leader>t :CtrlP<cr>
+
+" Resize window
+map <leader>wr :let &winwidth = &columns * 6 / 10<cr>
+
+"Resize window
+" let &winheight = &lines * 6 / 10
+let &winheight = &lines - 9
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
