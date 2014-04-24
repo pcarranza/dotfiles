@@ -1,0 +1,32 @@
+#!/bin/bash
+
+while getopts fc: flag; do
+    case $flag in
+        f)
+            OUT="files"
+            ;;
+        c)
+            COLUMNS=$OPTARG
+            ;;
+    esac
+done
+
+if [[ $COLUMNS == "" ]]; then
+    COLUMNS=80
+fi
+
+origin=$(git rev-list -1 HEAD)
+for rev in $(git rev-list -n$COLUMNS --skip 1 HEAD)
+do
+    data=$(git diff --shortstat $origin $rev)
+    origin=$rev
+    if [[ $OUT == "files" ]]; then
+        files=$(echo $data | cut -d ' ' -f 1); files=$(printf "%.0f" $files)
+        echo $files
+    else
+        insertions=$(echo $data | grep -oe "[0-9]\+ insertions" | grep -oe "[0-9]\+"); insertions=$(printf "%.0f" $insertions)
+        deletions=$(echo $data | grep -oe "[0-9]\+ deletions" | grep -oe "[0-9]\+"); deletions=$(printf "%.0f" $deletions)
+        let cumulative=$insertions+$deletions
+        echo $cumulative
+    fi
+done
