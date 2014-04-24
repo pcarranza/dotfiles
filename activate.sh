@@ -1,10 +1,14 @@
 #!/bin/bash
 
-ln -s dotfiles/.gitconfig
-ln -s dotfiles/.githelpers
-ln -s dotfiles/.gitignore
-ln -s dotfiles/.gitmodules
-ln -s dotfiles/.vim
-ln -s dotfiles/.vimrc
-ln -s dotfiles/.zsh_aliases
-ln -s dotfiles/.irbrc
+cd ~
+ln -s .dotfiles/gitconfig .gitconfig  
+ln -s .dotfiles/githelpers .githelpers 
+ln -s .dotfiles/gitignore .gitignore  
+ln -s .dotfiles/gitmodules .gitmodules 
+ln -s .dotfiles/vim .vim        
+ln -s .dotfiles/vimrc .vimrc        
+ln -s .dotfiles/zsh_aliases .zsh_aliases  
+ln -s .dotfiles/irbrc .irbrc        
+git submodule init
+git submodule update
+vim +PluginInstall +qall

@@ -1,6 +1,6 @@
-[submodule ".vim/bundle/vim-commentary"]
-	path = .vim/bundle/vim-commentary
+[submodule "vim/bundle/vim-commentary"]
+	path = vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule ".vim/bundle/vundle"]
-	path = .vim/bundle/vundle
+[submodule "vim/bundle/vundle"]
+	path = vim/bundle/vundle
 	url = https://github.com/gmarik/Vundle.vim
