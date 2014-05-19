@@ -5,6 +5,9 @@ if [ ! -f activate.sh ]; then
     exit 1
 fi
 
+git submodule init
+git submodule update
+
 cd ~
 ln -s .dotfiles/gitconfig .gitconfig  
 ln -s .dotfiles/githelpers .githelpers 
@@ -15,8 +18,6 @@ ln -s .dotfiles/irbrc .irbrc
 ln -s .dotfiles/zshrc .zshrc
 ln -s .dotfiles/zsh_aliases .zsh_aliases  
 
-git submodule init
-git submodule update
 vim +PluginInstall +qall
 
 ln -s .dotfiles/oh-my-zsh .oh-my-zsh
