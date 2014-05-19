@@ -91,6 +91,7 @@ augroup vimrcEx
 
     " Don't syntax highlight markdown because it's often wrong
     autocmd! FileType mkd setlocal syn=off
+    autocmd! FileType markdown setlocal syn=off
 
 augroup END
 
@@ -148,3 +149,14 @@ colorscheme jellybeans
 " Put useful info in status line
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 :hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTRL P Configuration
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:30'
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Replace selected text
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
