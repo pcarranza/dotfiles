@@ -10,7 +10,6 @@ call vundle#rc()
 
 " let Vundle manage Vundle, required
 Bundle 'gmarik/vundle'
-
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-commentary'
 
@@ -98,16 +97,10 @@ augroup END
 " """"""""
 " Mappings
 " """"""""
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-"nnoremap j gj
-"nnoremap k gk
 map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
@@ -128,6 +121,11 @@ map <leader>wr :let &winwidth = &columns * 6 / 10<cr>
 "Resize window
 " let &winheight = &lines * 6 / 10
 let &winheight = &lines - 9
+
+" Map vimrc editing
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
@@ -160,3 +158,8 @@ let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:30'
 " Replace selected text
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" Load a local configuration file if it exists
+if filereadable(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
