@@ -27,13 +27,13 @@ if [ "$HELP" == "1" ]; then
         USAGE:
         $dif [-h] [-f] [-r] [-i] [-n number]
 
-        By default it will print the sum of inserted+deleted lines on each commit
+        By default it will print the sum of inserted+deleted lines on each commit, from oldest on the left to newest on the right
 
         OPTIONS:
             -n: how many commits to pick, the size of the output
             -f: will print the sum of modified files
             -r: will print the relative difference of lines inserted minus deleted
-            -i: will invert from left to right the output
+            -i: will invert left to right on the output, so the newest is going to be on the left
 
 EOF
     exit 0
@@ -50,8 +50,8 @@ do
     data=$(git diff --shortstat $origin $rev)
     origin=$rev
     if [[ $OUT == "files" ]]; then
-        files=$(echo $data | cut -d ' ' -f 1); files=$(printf "%.0f" $files)
-        echo $files
+        value=$(echo $data | cut -d ' ' -f 1)
+        value=$(printf "%.0f" $value)
     else
         insertions=$(echo $data | grep -oe "[0-9]\+ insertions" | grep -oe "[0-9]\+"); insertions=$(printf "%.0f" $insertions)
         deletions=$(echo $data | grep -oe "[0-9]\+ deletions" | grep -oe "[0-9]\+"); deletions=$(printf "%.0f" $deletions)
@@ -60,11 +60,11 @@ do
         else
             let value=$insertions+$deletions
         fi
-        if [ "$INVERTED" == "1" ]; then
-            result=("${value}" "${result[@]}")
-        else
-            result=("${result[@]}" "${value}")
-        fi
+    fi
+    if [ "$INVERTED" == "1" ]; then
+        result=("${result[@]}" "${value}")
+    else
+        result=("${value}" "${result[@]}")
     fi
 done
 echo ${result[@]}
