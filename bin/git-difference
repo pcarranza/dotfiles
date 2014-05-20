@@ -1,12 +1,15 @@
 #!/bin/bash
 
-while getopts fc: flag; do
+while getopts frc: flag; do
     case $flag in
         f)
             OUT="files"
             ;;
         c)
             COLUMNS=$OPTARG
+            ;;
+        r)
+            MODE="relative"
             ;;
     esac
 done
@@ -26,7 +29,11 @@ do
     else
         insertions=$(echo $data | grep -oe "[0-9]\+ insertions" | grep -oe "[0-9]\+"); insertions=$(printf "%.0f" $insertions)
         deletions=$(echo $data | grep -oe "[0-9]\+ deletions" | grep -oe "[0-9]\+"); deletions=$(printf "%.0f" $deletions)
-        let cumulative=$insertions+$deletions
-        echo $cumulative
+        if [[ $MODE == "relative" ]]; then
+            let value=$insertions-$deletions
+        else
+            let value=$insertions+$deletions
+        fi
+        echo "${value}"
     fi
 done
