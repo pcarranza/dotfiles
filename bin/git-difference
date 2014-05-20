@@ -1,23 +1,49 @@
 #!/bin/bash
 
-while getopts frc: flag; do
+while getopts hfrin: flag; do
     case $flag in
         f)
             OUT="files"
             ;;
-        c)
+        n)
             COLUMNS=$OPTARG
             ;;
         r)
             MODE="relative"
             ;;
+        i)
+            INVERTED="1"
+            ;;
+        h)
+            HELP="1"
+            ;;
     esac
 done
+
+if [ "$HELP" == "1" ]; then
+    dif=$(basename $0)
+    cat <<EOF
+
+        USAGE:
+        $dif [-h] [-f] [-r] [-i] [-n number]
+
+        By default it will print the sum of inserted+deleted lines on each commit
+
+        OPTIONS:
+            -n: how many commits to pick, the size of the output
+            -f: will print the sum of modified files
+            -r: will print the relative difference of lines inserted minus deleted
+            -i: will invert from left to right the output
+
+EOF
+    exit 0
+fi
 
 if [[ $COLUMNS == "" ]]; then
     COLUMNS=80
 fi
 
+result=()
 origin=$(git rev-list -1 HEAD)
 for rev in $(git rev-list -n$COLUMNS --skip 1 HEAD)
 do
@@ -34,6 +60,11 @@ do
         else
             let value=$insertions+$deletions
         fi
-        echo "${value}"
+        if [ "$INVERTED" == "1" ]; then
+            result=("${value}" "${result[@]}")
+        else
+            result=("${result[@]}" "${value}")
+        fi
     fi
 done
+echo ${result[@]}
