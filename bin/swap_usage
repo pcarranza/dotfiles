@@ -14,9 +14,19 @@ do
         let SUM=$SUM+$SWAP
     done
     if (( $SUM > 0 )); then
-        echo "PID=$PID swapped $SUM KB ($PROGNAME)"
+        if (( $SUM < 1024 )); then
+            echo "PID=$PID swapped $SUM KB ($PROGNAME)"
+        else
+            let MB=$SUM/1024
+            echo "PID=$PID swapped $MB MB ($PROGNAME)"
+        fi
     fi
     let OVERALL=$OVERALL+$SUM
     SUM=0
 done
-echo "Overall swap used: $OVERALL KB"
+if (( $OVERALL < 1024 )); then
+    echo "Overall swap used: $OVERALL KB"
+else
+    let MB=$OVERALL/1024
+    echo "Overall swap used: $MB MB"
+fi
