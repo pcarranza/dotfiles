@@ -13,6 +13,13 @@ cd ~/.dotfiles
 
 Pick whatever you want from here.
 
+## Tools
+
+* git-difference: to be used with Zack Holman's [spark colored version](https://github.com/pcarranza/spark), provides the number of changes per commit as a positive or negative number.
+* swap-io-usage: usin vmstat returns what percentage of the IO is used for swapping purposes
+* swap-usage: must be run as root, provides the size of swapped memory per process
+* watch-uninterruptible: watches for processes in uninterruptible state (usually I/O)
+
 ## Extras
 
 In order to enable zsh extras just create a symlink for it
