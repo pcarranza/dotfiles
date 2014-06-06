@@ -12,6 +12,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-commentary'
+Bundle 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
 
 syntax on
@@ -136,8 +137,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 ":color grb256
 set t_Co=256
 set background=dark
-colorscheme grb256
-" colorscheme jellybeans
+"colorscheme grb256
+colorscheme jellybeans
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
