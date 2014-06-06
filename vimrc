@@ -12,6 +12,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-commentary'
+Plugin 'bling/vim-airline'
 
 syntax on
 filetype off
@@ -135,8 +136,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 ":color grb256
 set t_Co=256
 set background=dark
-" colorscheme grb256
-colorscheme jellybeans
+colorscheme grb256
+" colorscheme jellybeans
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
@@ -145,9 +146,14 @@ colorscheme jellybeans
 
 
 " Put useful info in status line
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+" :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 :hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
 
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AIRLINE
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2
+let g:airline_powerline_fonts = 1
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRL P Configuration
