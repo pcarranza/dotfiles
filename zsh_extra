@@ -26,3 +26,9 @@ set -o emacs
 export WORDCHARS='*?[]~&;!$%^<>'
 
 export PATH="$PATH:$HOME/.dotfiles/bin"
+
+# Mac only
+#
+# export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+# export GREP_OPTIONS="--color"
+
