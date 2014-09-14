@@ -35,7 +35,7 @@ set undolevels=1000                    " Bigger undo memory
 set visualbell                         " silence please
 set noerrorbells                       " I said silence
 
-set ttyfast                            " 
+set ttyfast                            "
 set encoding=utf-8                     " Force utf-8 encoding
 
 set noswapfile                         " Don't use a swapfile
@@ -65,13 +65,13 @@ set wildignore+=*/_site/*
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
 
-"set smartindent                        "  
+"set smartindent                        "
 set autoindent                         " indent
 set switchbuf=useopen
 set cmdheight=1
-set winwidth=79                        " Minimum window width 
+set winwidth=79                        " Minimum window width
 set winheight=5                        " Minimum window height
-set showtabline=2                      " 
+set showtabline=2                      "
 
 let mapleader = ","
 
@@ -94,6 +94,9 @@ augroup vimrcEx
     autocmd! FileType mkd setlocal syn=off
     autocmd! FileType markdown setlocal syn=off
 
+    autocmd! FileType ruby setlocal ts=2 sts=2 sw=2
+    autocmd! FileType python setlocal ts=4 sts=4 sw=4
+
 augroup END
 
 " """"""""
@@ -113,6 +116,12 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 
+" Map cutting an pasting on insert mode
+imap <c-d> <esc>ddi
+imap <c-f> <esc>pi
+
+" Uppercase in normal mode
+nmap <c-u> viwU
 
 " ControlP binding
 map <leader>t :CtrlP<cr>
@@ -170,3 +179,6 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
+" runpipe and send rspec colors documentation into the pipe silently
+" map <leader>rt :silent :!echo "rspec -c -f d" >> ~/.pipe<cr>:redraw!<cr>
