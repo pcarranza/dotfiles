@@ -147,7 +147,14 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 set t_Co=256
 set background=dark
 "colorscheme grb256
-colorscheme jellybeans
+"colorscheme jellybeans
+
+" Other colorscheme I like better
+colorscheme dark-ruby
+
+" Disable the cursor line
+hi CursorLine     term=none cterm=none guibg=bg guifg=fg
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
@@ -164,6 +171,9 @@ colorscheme jellybeans
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2
 let g:airline_powerline_fonts = 1
+let g:airline_detect_whitespace=0
+let g:airline_section_warning=""
+let g:airline_theme="badwolf"
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRL P Configuration
@@ -174,6 +184,12 @@ let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:30'
 " Replace selected text
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" Stop moving char when quiting insert mode
+let CursorColumnI = 0 "the cursor column position in INSERT
+autocmd InsertEnter * let CursorColumnI = col('.')
+autocmd CursorMovedI * let CursorColumnI = col('.')
+autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
 
 " Load a local configuration file if it exists
 if filereadable(glob("~/.vimrc.local"))
