@@ -19,6 +19,7 @@ Pick whatever you want from here.
 * swap-io-usage: using vmstat returns what percentage of the IO is used for swapping purposes
 * swap-usage: must be run as root, provides the size of swapped memory per process
 * watch-uninterruptible: watches for processes in uninterruptible state (usually I/O)
+* runpipe: creates a fifo pipe and runs a process that will keep reading from it, useful to run tests asynchronously.
 
 ## Extras
 
