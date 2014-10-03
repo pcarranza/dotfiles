@@ -116,12 +116,12 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 
-" Map cutting an pasting on insert mode
-imap <c-d> <esc>ddi
-imap <c-f> <esc>pi
+" Deleting without yanking in normal and visual mode
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
 
-" Uppercase in normal mode
-nmap <c-u> viwU
+" Paste withouth yanking in visual mode
+vnoremap <leader>p "_dP
 
 " ControlP binding
 map <leader>t :CtrlP<cr>
