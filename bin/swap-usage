@@ -38,18 +38,16 @@ function echo_if {
     PID=$1
     VALUE=$2
     PROGNAME=$3
-    if [[ $VALUE -eq 0 ]]; then
+    USERNAME=$4
+    UNIT=KB
+    if (($VALUE <= $IGNORE )); then
         return
     fi
-    if [[ $IGNORE -gt 0 && $VALUE -lt $IGNORE ]]; then
-        return
+    if (( $VALUE > 1024 )); then
+        UNIT=MB
+        let VALUE=$VALUE/1024
     fi
-    if [[ $VALUE -lt 1024 ]]; then
-        echo "PID=$PID swapped $VALUE KB ($PROGNAME)"
-    else
-        let MB=$VALUE/1024
-        echo "PID=$PID swapped $MB MB ($PROGNAME)"
-    fi
+    echo "PID=$PID swapped $VALUE $UNIT ($PROGNAME, $USERNAME)"
 }
 
 OVERALL=0
@@ -57,12 +55,12 @@ SUM=0
 for DIR in `find /proc/ -maxdepth 1 -type d -regex "^/proc/[0-9]+"`
 do
     PID=`echo $DIR | cut -d / -f 3`
-    PROGNAME=`ps -p $PID -o comm --no-headers`
+    eval `ps -p $PID -o comm,user --no-headers | awk ' { print "PROGNAME="$1 ; print "USERNAME="$2 } '`
     for SWAP in `grep Swap $DIR/smaps 2>/dev/null | awk '{ print $2 }'`
     do
         let SUM=$SUM+$SWAP
     done
-    echo_if $PID $SUM $PROGNAME
+    echo_if $PID $SUM $PROGNAME $USERNAME
     let OVERALL=$OVERALL+$SUM
     SUM=0
 done

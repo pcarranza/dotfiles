@@ -80,7 +80,8 @@ let mapleader = ","
 " """"""""
 augroup vimrcEx
     autocmd!
-    autocmd FileType text setlocal textwidth=78
+    autocmd FileType text setlocal textwidth=0
+    autocmd FileType text setlocal wrap
 
     autocmd BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
