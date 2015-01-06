@@ -112,6 +112,8 @@ map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
 
+noremap <Enter> :nohl<cr><cr>
+
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -199,3 +201,7 @@ endif
 
 " runpipe and send rspec colors documentation into the pipe silently
 " map <leader>rt :silent :!echo "rspec -c -f d" >> ~/.pipe<cr>:redraw!<cr>
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red
+hi clear SpellRare
+hi SpellRare cterm=underline
