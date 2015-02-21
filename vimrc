@@ -205,3 +205,13 @@ hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
 hi clear SpellRare
 hi SpellRare cterm=underline
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map ctrl+s to quit insert mode and save the file
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <c-s> <Esc>:wa<CR>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Leave Ex mode, for good, really, not needed anymore
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap Q <nop>
