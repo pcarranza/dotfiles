@@ -32,3 +32,8 @@ export PATH="$PATH:$HOME/.dotfiles/bin"
 # export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 # export GREP_OPTIONS="--color"
 
+# Disable stty ctrl-s for vi/vim
+alias vi="stty stop '' -ixoff ; vi"
+alias vim="vi"
+ttyctl -f
+
