@@ -215,3 +215,9 @@ inoremap <c-s> <Esc>:wa<CR>
 " Leave Ex mode, for good, really, not needed anymore
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap Q <nop>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Maps for toggling wrap and paste
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <leader>w :set wrap!<cr>
+noremap <leader>p :set paste!<cr>
