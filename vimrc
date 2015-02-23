@@ -16,6 +16,9 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
 
+" to prevent yaml from being so slow
+Bundle 'stephpy/vim-yaml'
+
 syntax on
 filetype off
 filetype plugin indent on
