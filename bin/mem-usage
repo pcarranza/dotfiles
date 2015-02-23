@@ -1,0 +1,50 @@
+#!/bin/bash
+
+PID_NAME=$1
+
+function main {
+    [[ -n $PID_NAME ]] && memory_for_one_processname $PID_NAME && exit 0
+    memory_for_all_processes
+}
+
+function memory_for_all_processes {
+    for PROCNAME in $(ps ax -o comm --no-headers | grep -v '[:/]' | sort -u) ; do
+        memory_for_one_processname $PROCNAME
+    done
+}
+
+function memory_for_one_processname {
+    for PID in $(pgrep $1) ; do 
+        memory_for_one_pid $PID
+    done
+}
+
+
+function memory_for_one_pid {
+    PID=$1
+    eval `ps -p $PID -o comm,user,tty --no-headers | awk ' { print "PROGNAME="$1 ; print "PUSER="$2 ; print "TTY="$3 } '`
+    PRIV_SUM=0 ; SWAP_SUM=0 ; SHARED_SUM=0
+    for PRIV in $(parse_maps Private_) ; do let PRIV_SUM=$PRIV_SUM+$PRIV ; done
+    for SWAP in $(parse_maps Swap) ; do let SWAP_SUM=$SWAP_SUM+$SWAP ; done
+    for SHARED in $(parse_maps Shared_) ; do let SHARED_SUM=$SHARED_SUM+$SHARED ; done
+    echo "$PROGNAME($PID) $PUSER$(tty_if_exists $TTY) - private: $(human_readable $PRIV_SUM) shared $(human_readable $SHARED_SUM) swap: $(human_readable $SWAP_SUM)"
+}
+
+function parse_maps {
+    grep $1 /proc/$PID/smaps 2> /dev/null | awk '{ print $2 }'
+}
+
+function human_readable {
+    VALUE=$1
+    [[ $VALUE -lt 1024 ]] && echo "$VALUE Kb" && return
+    let VALUE=$VALUE/1024
+    echo "$VALUE Mb"
+}
+
+function tty_if_exists {
+    TTY=$1
+    [[ "$TTY" == "?" ]] && echo "" && return
+    echo "($TTY)"
+}
+
+main
