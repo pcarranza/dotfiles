@@ -12,6 +12,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
 Bundle 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
 
