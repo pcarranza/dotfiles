@@ -3,11 +3,12 @@
 PID_NAME=$1
 
 function main {
-    [[ -n $PID_NAME ]] && memory_for_one_processname $PID_NAME && exit 0
+    [[ -n $PID_NAME ]] && print_header && memory_for_one_processname $PID_NAME && exit 0
     memory_for_all_processes
 }
 
 function memory_for_all_processes {
+    print_header
     for PROCNAME in $(ps ax -o comm --no-headers | grep -v '[:/]' | sort -u) ; do
         memory_for_one_processname $PROCNAME
     done
@@ -19,7 +20,6 @@ function memory_for_one_processname {
     done
 }
 
-
 function memory_for_one_pid {
     PID=$1
     eval `ps -p $PID -o comm,user,tty --no-headers | awk ' { print "PROGNAME="$1 ; print "PUSER="$2 ; print "TTY="$3 } '`
@@ -27,18 +27,43 @@ function memory_for_one_pid {
     for PRIV in $(parse_maps Private_) ; do let PRIV_SUM=$PRIV_SUM+$PRIV ; done
     for SWAP in $(parse_maps Swap) ; do let SWAP_SUM=$SWAP_SUM+$SWAP ; done
     for SHARED in $(parse_maps Shared_) ; do let SHARED_SUM=$SHARED_SUM+$SHARED ; done
-    echo "$PROGNAME($PID) $PUSER$(tty_if_exists $TTY) - private: $(human_readable $PRIV_SUM) shared $(human_readable $SHARED_SUM) swap: $(human_readable $SWAP_SUM)"
+    print_one_line "$PROGNAME" "$PID" "$PUSER" "$(tty_if_exists $TTY)" "$(human_readable $PRIV_SUM)" "$(human_readable $SHARED_SUM)" "$(human_readable $SWAP_SUM)"
 }
 
 function parse_maps {
     grep $1 /proc/$PID/smaps 2> /dev/null | awk '{ print $2 }'
 }
 
+function print_one_line {
+    PROGRAM=$1 ; PID=$2
+    PROGRAM_NAME=$(expand_column "${PROGRAM}(${PID})")
+    USERNAME="$3"
+    [[ -n $4 ]] && USERNAME="${USERNAME}$4"
+    USERNAME=$(expand_column "$USERNAME")
+    PRIVATE=$(expand_column "$5")
+    SHARED=$(expand_column "$6")
+    SWAP=$(expand_column "$7")
+    echo -e "$PROGRAM_NAME\t${USERNAME}\t${PRIVATE}\t${SHARED}\t${SWAP}"
+}
+
+function print_header {
+    print_one_line "PROCNAME" "PID" "USER" "(TTY)" "PRIV MEM" "SHARED MEM" "SWAP"
+    print_one_line "--------" "---" "----" "-----" "--------" "----------" "----"
+}
+
+function expand_column {
+    COLUMN=$1
+    [[ ${#COLUMN} -lt 8 ]] && COLUMN="${COLUMN}\t"
+    [[ ${#COLUMN} -lt 16 ]] && COLUMN="${COLUMN}\t"
+    echo "${COLUMN}"
+}
+
 function human_readable {
     VALUE=$1
-    [[ $VALUE -lt 1024 ]] && echo "$VALUE Kb" && return
-    let VALUE=$VALUE/1024
-    echo "$VALUE Mb"
+    echo "${VALUE} Kb"
+    # [[ $VALUE -lt 1024 ]] && echo "${VALUE}kb" && return
+    # let VALUE=$VALUE/1024
+    # echo "${VALUE}mb"
 }
 
 function tty_if_exists {
