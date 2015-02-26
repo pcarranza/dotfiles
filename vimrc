@@ -15,6 +15,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
 Bundle 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
+Plugin 'mileszs/ack.vim'
 
 " to prevent yaml from being so slow
 Bundle 'stephpy/vim-yaml'
