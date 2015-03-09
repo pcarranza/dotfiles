@@ -29,6 +29,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set shiftround                         " user multiple of shiftwidth when identing
+set exrc                               " enable local vimrc file
 
 
 set ruler
@@ -169,7 +170,6 @@ hi CursorLine     term=none cterm=none guibg=bg guifg=fg
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ":set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
-
 " Put useful info in status line
 " :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 :hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
@@ -211,7 +211,7 @@ hi SpellBad cterm=underline ctermfg=red
 hi clear SpellRare
 hi SpellRare cterm=underline
 
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map ctrl+s to quit insert mode and save the file
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <c-s> <Esc>:wa<CR>
@@ -227,3 +227,5 @@ nnoremap Q <nop>
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <leader>w :set wrap!<cr>
 noremap <leader>p :set paste!<cr>
+
+set secure
