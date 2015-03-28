@@ -33,7 +33,7 @@ set shiftround                         " user multiple of shiftwidth when identi
 set exrc                               " enable local vimrc file
 
 
-set ruler
+set ruler                              " Show line and column number
 set hidden                             " Don't close buffers when changing, just hide
 set nowrap                             " Don't wrap large lines
 set history=1000                       " Remember 100 history commands
@@ -42,7 +42,7 @@ set undolevels=1000                    " Bigger undo memory
 set visualbell                         " silence please
 set noerrorbells                       " I said silence
 
-set ttyfast                            "
+set ttyfast                            " Assume that the terminal is fast
 set encoding=utf-8                     " Force utf-8 encoding
 
 set noswapfile                         " Don't use a swapfile
@@ -63,8 +63,12 @@ set backspace=indent,eol,start
 set showcmd
 set wildmode=longest,list
 set wildmenu
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+" Things that ctrlp will ignore
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 set wildignore+=*/_site/*
+
+set laststatus=2                       " Show status line in windows => always
 
 " Fix slow O inserts
 :set timeout timeoutlen=1000 ttimeoutlen=100
@@ -79,6 +83,9 @@ set cmdheight=1
 set winwidth=79                        " Minimum window width
 set winheight=5                        " Minimum window height
 set showtabline=2                      "
+
+" By default, minimum height will be number of lines - 9
+let &winheight = &lines - 9
 
 let mapleader = ","
 
@@ -107,9 +114,21 @@ augroup vimrcEx
 
 augroup END
 
-" """"""""
+" Remove trailing whitespace always
+autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.haml :%s/\s\+$//e
+autocmd BufWritePre *.html :%s/\s\+$//e
+autocmd BufWritePre *.scss :%s/\s\+$//e
+autocmd BufWritePre *.slim :%s/\s\+$//e
+
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
-" """"""""
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Disable arrow keys
+"
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
@@ -119,8 +138,10 @@ map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
 
+" Remove highlight with enter
 noremap <Enter> :nohl<cr><cr>
 
+" Switch window with C+<movement key>
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -136,83 +157,14 @@ vnoremap <leader>p "_dP
 " ControlP binding
 map <leader>t :CtrlP<cr>
 
-" Resize window
+" Resize windows to 6/10 (for small screens)
 map <leader>wr :let &winwidth = &columns * 6 / 10<cr>
-
-"Resize window
-" let &winheight = &lines * 6 / 10
-let &winheight = &lines - 9
 
 " Map vimrc editing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" COLOR
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-":set t_Co=256 " 256 colors
-":set background=dark
-":color grb256
-set t_Co=256
-set background=dark
-"colorscheme grb256
-"colorscheme jellybeans
-
-" Other colorscheme I like better
-colorscheme dark-ruby
-
-" Disable the cursor line
-hi CursorLine     term=none cterm=none guibg=bg guifg=fg
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" STATUS LINE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-":set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-
-" Put useful info in status line
-" :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-:hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
-
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" AIRLINE
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline_detect_whitespace=0
-let g:airline_section_warning=""
-let g:airline_theme="badwolf"
-
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CTRL P Configuration
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:30'
-
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Replace selected text
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-
-" Stop moving char when quiting insert mode
-let CursorColumnI = 0 "the cursor column position in INSERT
-autocmd InsertEnter * let CursorColumnI = col('.')
-autocmd CursorMovedI * let CursorColumnI = col('.')
-autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
-
-" Load a local configuration file if it exists
-if filereadable(glob("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
-
-" runpipe and send rspec colors documentation into the pipe silently
-" map <leader>rt :silent :!echo "rspec -c -f d" >> ~/.pipe<cr>:redraw!<cr>
-hi clear SpellBad
-hi SpellBad cterm=underline ctermfg=red
-hi clear SpellRare
-hi SpellRare cterm=underline
-
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map ctrl+s to quit insert mode and save the file
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <c-s> <Esc>:wa<CR>
@@ -224,9 +176,85 @@ inoremap <c-s> <Esc>:wa<CR>
 nnoremap Q <nop>
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maps for toggling wrap and paste
+" Toggling wrap, paste and numbers
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <leader>w :set wrap!<cr>
 noremap <leader>p :set paste!<cr>
+noremap <leader>n :set number!<cr>
 
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Replace selected text
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CONFIGURATIONS
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COLORS for dark terminal
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+set background=dark
+"colorscheme jellybeans
+colorscheme dark-ruby
+
+" Disable the cursor line
+hi CursorLine     term=none cterm=none guibg=bg guifg=fg
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" STATUS LINE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+":set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+" Put useful info in status line
+" :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+" :hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AIRLINE
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts = 1
+let g:airline_detect_whitespace=0
+let g:airline_section_warning=""
+let g:airline_theme="badwolf"
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTRL P
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:30'
+
+" Stop moving char when quiting insert mode
+let CursorColumnI = 0 "the cursor column position in INSERT
+autocmd InsertEnter * let CursorColumnI = col('.')
+autocmd CursorMovedI * let CursorColumnI = col('.')
+autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fix spell checking colors
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red
+hi clear SpellRare
+hi SpellRare cterm=underline
+
+
+" Maybe ruby tweaks, don't know if they are actually needed
+" runpipe and send rspec colors documentation into the pipe silently
+" map <leader>rt :silent :!echo "rspec -c -f d" >> ~/.pipe<cr>:redraw!<cr>
+
+" Load a extra configuration, useful to set solarized colors for ex.
+if filereadable(glob("~/.vimrc_extra"))
+    source ~/.vimrc_extra
+endif
+" Load a local configuration file if it exists
+if filereadable(glob("~/.vimrc_local"))
+    source ~/.vimrc_local
+endif
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable autocmd injection
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set secure
