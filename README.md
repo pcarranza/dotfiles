@@ -37,3 +37,7 @@ It will be loaded automatically
 It is possible to add local configurations files for vim and zsh. They will be loaded automatically by both vim and zsh.
 
 Just create ~/.zsh_local or ~/.vimrc.local
+
+## Where to get powerline fonts:
+
+https://github.com/powerline/fonts
