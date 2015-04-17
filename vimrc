@@ -225,6 +225,7 @@ let g:airline_theme="badwolf"
 " CTRL P
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:30'
+let g:clear_cache_on_exit = 0
 
 " Stop moving char when quiting insert mode
 let CursorColumnI = 0 "the cursor column position in INSERT
