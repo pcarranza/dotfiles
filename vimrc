@@ -17,6 +17,7 @@ Bundle 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
 Plugin 'mileszs/ack.vim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'powerline/fonts'
 
 " to prevent yaml from being so slow
 Bundle 'stephpy/vim-yaml'
