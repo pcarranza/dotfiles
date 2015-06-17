@@ -1,0 +1,59 @@
+
+" """"""""
+" AutoCmds
+" """"""""
+augroup vimrcEx
+    autocmd!
+    autocmd FileType text setlocal textwidth=0
+    autocmd FileType text setlocal wrap
+
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+
+augroup END
+
+augroup trailings
+    autocmd!
+    " Remove trailing whitespace always
+    autocmd BufWritePre *.rb :%s/\s\+$//e
+    autocmd BufWritePre *.py :%s/\s\+$//e
+    autocmd BufWritePre *.haml :%s/\s\+$//e
+    autocmd BufWritePre *.html :%s/\s\+$//e
+    autocmd BufWritePre *.scss :%s/\s\+$//e
+    autocmd BufWritePre *.slim :%s/\s\+$//e
+augroup END
+
+augroup filetypes
+    autocmd!
+    autocmd BufRead,BufNewFile *vim.d/* set filetype=vim
+
+    autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:&gt;
+    autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
+    autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
+
+    " Don't syntax highlight markdown because it's often wrong
+    autocmd BufRead *.md  setlocal syn=off
+    autocmd! FileType mkd setlocal syn=off
+    autocmd! FileType markdown setlocal syn=off
+
+    autocmd! FileType ruby setlocal ts=2 sts=2 sw=2
+    autocmd! FileType python setlocal ts=4 sts=4 sw=4
+augroup END
+
+augroup insertionFixes
+    autocmd!
+    " Stop moving char when quiting insert mode
+    let CursorColumnI = 0 "the cursor column position in INSERT
+    autocmd InsertEnter * let CursorColumnI = col('.')
+    autocmd CursorMovedI * let CursorColumnI = col('.')
+    autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
+augroup END
+
+augroup windowSizes
+    autocmd!
+    autocmd WinEnter * let &winwidth = &columns * 7 / 10
+    autocmd WinEnter * let &winheight = &lines - 9
+    autocmd WinLeave * let &winheight = 5
+augroup END

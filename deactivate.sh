@@ -6,12 +6,13 @@ if [ ! -f deactivate.sh ]; then
 fi
 
 cd ~
-unlink ~/.gitconfig  
-unlink ~/.githelpers 
-unlink ~/.gitignore  
-unlink ~/.vim        
-unlink ~/.vimrc        
-unlink ~/.irbrc        
+unlink ~/.gitconfig
+unlink ~/.githelpers
+unlink ~/.gitignore
+unlink ~/.vim
+unlink ~/.vim.d
+unlink ~/.vimrc
+unlink ~/.irbrc
 unlink ~/.zshrc
-unlink ~/.zsh_aliases  
+unlink ~/.zsh_aliases
 unlink ~/.oh-my-zsh

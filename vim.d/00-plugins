@@ -1,0 +1,39 @@
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" alternatively, pass a path where Vundle should install bundles
+"let path = '~/some/path/here'
+"call vundle#rc(path)
+
+" let Vundle manage Vundle, required
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
+Bundle 'flazz/vim-colorschemes'
+Plugin 'bling/vim-airline'
+Plugin 'mileszs/ack.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'powerline/fonts'
+
+" to prevent yaml from being so slow
+Bundle 'stephpy/vim-yaml'
+
+syntax on
+filetype off
+filetype plugin indent on
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AIRLINE
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts = 1
+" let g:airline_detect_whitespace=0
+let g:airline_section_warning=""
+let g:airline_theme="badwolf"
+let g:airline#extensions#whitespace#enabled = 1
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTRL P
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:30'
+let g:clear_cache_on_exit = 0

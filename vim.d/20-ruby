@@ -1,0 +1,3 @@
+" runpipe and send rspec colors documentation into the pipe silently
+" map <leader>rt :silent :!echo "rspec -c -f d" >> ~/.pipe<cr>:redraw!<cr>
+

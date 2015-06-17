@@ -1,0 +1,5 @@
+" By default, minimum height will be number of lines - 9
+let &winheight = &lines - 9
+
+" Resize windows to 6/10 (for small screens)
+map <leader>wr :let &winwidth = &columns * 6 / 10<cr>

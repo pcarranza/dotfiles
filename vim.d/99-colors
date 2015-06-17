@@ -1,0 +1,19 @@
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COLORS for dark terminal
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+set background=dark
+"colorscheme jellybeans
+colorscheme dark-ruby
+
+" Disable the cursor line
+hi CursorLine     term=none cterm=none guibg=bg guifg=fg
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fix spell checking colors
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red
+hi clear SpellRare
+hi SpellRare cterm=underline

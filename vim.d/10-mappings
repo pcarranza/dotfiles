@@ -1,0 +1,68 @@
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mappings
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Remap leader
+let mapleader = ","
+
+"
+" Disable arrow keys
+"
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+map <Left> :echo "no!"<cr>
+map <Right> :echo "no!"<cr>
+map <Up> :echo "no!"<cr>
+map <Down> :echo "no!"<cr>
+
+" Remove highlight with enter
+noremap <Enter> :nohl<cr><cr>
+
+" Switch window with C+<movement key>
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+
+" Deleting without yanking in normal and visual mode
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Paste withouth yanking in visual mode
+vnoremap <leader>p "_dP
+
+" Map vimrc editing
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map ctrl+s to quit insert mode and save the file
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <c-s> <Esc>:wa<CR>
+inoremap <c-s> <Esc>:wa<CR>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Leave Ex mode, for good, really, not needed anymore
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap Q <nop>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggling wrap, paste and numbers
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <leader>w :set wrap!<cr>
+noremap <leader>p :set paste!<cr>
+noremap <leader>n :set number!<cr>
+
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Replace selected text
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ControlP binding
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>t :CtrlP<cr>
