@@ -4,8 +4,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
 set background=dark
-"colorscheme jellybeans
-colorscheme dark-ruby
+" colorscheme jellybeans
+" colorscheme dark-ruby
+colorscheme grb256
 
 " Disable the cursor line
 hi CursorLine     term=none cterm=none guibg=bg guifg=fg

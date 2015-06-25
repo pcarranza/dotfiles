@@ -1,0 +1,63 @@
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set shiftround                         " user multiple of shiftwidth when identing
+set exrc                               " enable local vimrc file
+
+set ruler                              " Show line and column number
+set hidden                             " Don't close buffers when changing, just hide
+set nowrap                             " Don't wrap large lines
+set history=1000                       " Remember 100 history commands
+set undolevels=1000                    " Bigger undo memory
+
+set visualbell                         " silence please
+set noerrorbells                       " I said silence
+
+set ttyfast                            " Assume that the terminal is fast
+set encoding=utf-8                     " Force utf-8 encoding
+
+set noswapfile                         " Don't use a swapfile
+
+set showmatch                          " show matches
+set incsearch                          " Incremental search
+set hlsearch                           " Highlight search
+set ignorecase smartcase               " ignore casing when searching
+set scrolloff=3                        " Scroll 3 lines passing search, don't leave on top
+
+set cursorline
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,/var/tmp,/tmp
+set backspace=indent,eol,start         " Backspace through anything
+
+set showcmd
+set wildmode=longest,list
+set wildmenu
+
+" Things that any file autocomplete will ignore
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
+set wildignore+=*/_site/*
+
+set laststatus=2                       " Show status line in windows => always
+
+set timeout timeoutlen=1000 ttimeoutlen=100" Fix slow O inserts
+
+" If a file is changed outside of vim, automatically reload it without asking
+set autoread
+
+set autoindent                         " Copy indentation from the previous line
+set switchbuf=useopen                  " Reuse open buffers when switching to it
+set cmdheight=1                        " Size of the command window
+set winwidth=79                        " Minimum window width
+set winheight=5                        " Minimum window height
+set showtabline=2                      " Show the tabs all the time, if using them
+
+"set relativenumber
+"set smartindent                        "
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" STATUS LINE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Put useful info in status line
+":set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)

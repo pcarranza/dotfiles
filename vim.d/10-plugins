@@ -27,9 +27,8 @@ filetype plugin indent on
 " AIRLINE
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
-" let g:airline_detect_whitespace=0
 let g:airline_section_warning=""
-let g:airline_theme="badwolf"
+let g:airline_theme="molokai"
 let g:airline#extensions#whitespace#enabled = 1
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
