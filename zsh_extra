@@ -53,11 +53,11 @@ unalias g # If 'which g' returns 'g aliased to git',
 # No arguments: `git status`
 # With arguments: acts like `git`
 g() {
-  if [[ $# > 0 ]]; t
-    git $
-  e
-    git s
-  f
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
 }
 
 # Complete g like git
