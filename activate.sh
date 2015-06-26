@@ -17,8 +17,15 @@ ln -s .dotfiles/vim.d .vim.d
 ln -s .dotfiles/vimrc .vimrc
 ln -s .dotfiles/irbrc .irbrc
 ln -s .dotfiles/zshrc .zshrc
-ln -s .dotfiles/zsh_aliases .zsh_aliases
 
 vim +PluginInstall +qall
 
 ln -s .dotfiles/oh-my-zsh .oh-my-zsh
+
+[[ ! -d ~/.zsh.d ]] && mkdir -p ~/.zsh.d
+ZSH_FILES="zsh_aliases zsh_paths zsh_terminal_tweaking zsh_turn_g_into_git zsh_tweaks"
+for FILE in $(echo $ZSH_FILES); do 
+    TARGET_FILE="~/.zsh.d/$FILE"
+    [[ -f $TARGET_FILE ]] && echo File $TARGET_FILE exists, skipping to prevent overriding configuration
+    [[ ! -f $TARGET_FILE ]] && cp ~/.dotfiles/zsh.d/$FILE ~/.zsh.d/
+done

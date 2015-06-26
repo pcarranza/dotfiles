@@ -1,0 +1,2 @@
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export GREP_OPTIONS="--color"

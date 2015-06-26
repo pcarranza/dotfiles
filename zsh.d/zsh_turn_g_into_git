@@ -1,0 +1,17 @@
+# Shorten git to just g
+unalias g # If 'which g' returns 'g aliased to git', 
+# this may make zsh crash as g will be defined both as an alias and a function
+
+
+# No arguments: `git status`
+# With arguments: acts like `git`
+g() {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
+
+# Complete g like git
+compdef g=git

@@ -14,5 +14,4 @@ unlink ~/.vim.d
 unlink ~/.vimrc
 unlink ~/.irbrc
 unlink ~/.zshrc
-unlink ~/.zsh_aliases
 unlink ~/.oh-my-zsh

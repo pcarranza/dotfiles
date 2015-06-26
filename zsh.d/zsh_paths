@@ -1,0 +1,3 @@
+# Include dotfiles bin in the path
+export PATH="$PATH:$HOME/.dotfiles/bin"
+
