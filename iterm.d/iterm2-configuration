@@ -1,0 +1,4 @@
+Profiles->Default->Text->Fonts: 15pt Sause code powerline light
+...->Windows->Columns: 140, Lines: 36
+...->General->Command: login -fp $USER
+...->Terminal->Report terminal type: xterm-color
