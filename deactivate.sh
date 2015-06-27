@@ -15,3 +15,7 @@ unlink ~/.vimrc
 unlink ~/.irbrc
 unlink ~/.zshrc
 unlink ~/.oh-my-zsh
+
+echo <<-EOF
+Dotfiles disabled.
+EOF
