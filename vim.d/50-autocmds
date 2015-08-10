@@ -55,3 +55,9 @@ augroup windowSizes
     autocmd WinEnter * let &winheight = &lines - 9
     autocmd WinLeave * let &winheight = 5
 augroup END
+
+augroup numbers
+    autocmd!
+    autocmd WinEnter,VimEnter,BufRead,BufNewFile,BufNew * set relativenumber
+    autocmd WinLeave,BufLeave * set norelativenumber
+augroup END
