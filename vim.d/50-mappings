@@ -66,3 +66,10 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " ControlP binding
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>t :CtrlP<cr>
+
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTags binding
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <leader>r. :silent :! ctags -R --exclude=.git --exclude=log *<cr>:redraw!<cr>
