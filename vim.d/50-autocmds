@@ -61,3 +61,8 @@ augroup numbers
     autocmd WinEnter,VimEnter,BufRead,BufNewFile,BufNew * set relativenumber
     autocmd WinLeave,BufLeave * set norelativenumber
 augroup END
+
+augroup remove_weird_chars
+    autocmd!
+    autocmd BufWritePre * :%s/[^\x00-\x7F]//g
+augroup END
