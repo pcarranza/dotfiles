@@ -64,5 +64,5 @@ augroup END
 
 augroup remove_weird_chars
     autocmd!
-    autocmd BufWritePre * :%s/[^\x00-\x7F]//g
+    autocmd BufWritePre * :silent! :%s/[^\x00-\x7F]//g
 augroup END
