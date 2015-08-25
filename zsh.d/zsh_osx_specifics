@@ -1,3 +1,4 @@
+[[ ! $OSTYPE == darwin* ]] && return
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 alias ls='ls --color=always'
