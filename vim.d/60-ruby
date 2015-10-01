@@ -1,6 +1,6 @@
 " runpipe and send rspec colors documentation into the pipe silently
 augroup ruby
     autocmd!
-    autocmd FileType ruby map <leader>rp :silent :!echo "rspec -c -f d" >> ~/.pipe<cr>:redraw!<cr>
+    autocmd FileType ruby map <leader>rp :silent :!echo "rspec -c -f d" >> .pipe<cr>:redraw!<cr>
     autocmd FileType ruby map <leader>rt :! rspec -c -f d<cr>
 augroup END

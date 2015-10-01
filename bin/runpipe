@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ ! -p ~/.pipe ]; then
-    mkfifo ~/.pipe
+if [ ! -p .pipe ]; then
+    mkfifo .pipe
 fi
 echo "Reading pipe..."
-while read cmd < ~/.pipe
+while read cmd < .pipe
 do
     echo "Got command '$cmd', running"
     /usr/bin/env /bin/bash -c "$cmd"

@@ -5,4 +5,5 @@
 *.pyc
 .vim/bundle/*
 .gitignore
+.pipe
 tags
