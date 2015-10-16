@@ -1,0 +1,6 @@
+
+# Optionally load rbenv if it is there
+if [ -d ~/.rbenv ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
