@@ -18,9 +18,6 @@ ln -s .dotfiles/vimrc .vimrc
 ln -s .dotfiles/irbrc .irbrc
 ln -s .dotfiles/zshrc .zshrc
 ln -s .dotfiles/zsh.d .zsh.d
-
-vim +PluginInstall +qall
-
 ln -s .dotfiles/oh-my-zsh .oh-my-zsh
 
 echo <<-EOF
@@ -34,3 +31,5 @@ Fonts are expected to be in $HOME/.dotfiles/vim/bundle/fonts, execute the instal
 
 Iterm2 has to be tweaked a bit, configuration instructions can be found in $HOME/.dotfiles/iterm.d/iterm2-configuration
 EOF
+
+vim +PluginInstall +qall
