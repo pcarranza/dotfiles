@@ -1,6 +1,30 @@
 " runpipe and send rspec colors documentation into the pipe silently
+
+function! AllRubyTests()
+    return ""
+endfunction
+
+function! CurrentRubyTest()
+    return "spec/**/" . expand("%:t:r") . "_spec.rb"
+endfunction
+
+function! RspecCommand(fn)
+    return "rspec -c -f d " . a:fn()
+endfunction
+
+function! RunRspecCommand(fn)
+    exec ":!" . RspecCommand(a:fn)
+endfunction
+
+function! PipeRspecCommand(fn)
+    let result = system("echo '" . RspecCommand(a:fn) . "' \>\> .pipe")
+    echom "sent command " . RspecCommand(a:fn) . " to .pipe"
+endfunction
+
 augroup ruby
     autocmd!
-    autocmd FileType ruby map <leader>rp :silent :!echo "rspec -c -f d" >> .pipe<cr>:redraw!<cr>
-    autocmd FileType ruby map <leader>rt :! rspec -c -f d<cr>
+    autocmd FileType ruby map <leader>rt :call RunRspecCommand(function("CurrentRubyTest"))<cr>
+    autocmd FileType ruby map <leader>rat :call RunRspecCommand(function("AllRubyTests"))<cr>
+    autocmd FileType ruby map <leader>pt :call PipeRspecCommand(function("CurrentRubyTest"))<cr>
+    autocmd FileType ruby map <leader>pat :call PipeRspecCommand(function("AllRubyTests"))<cr>
 augroup END
