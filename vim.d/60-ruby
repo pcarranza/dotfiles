@@ -5,7 +5,12 @@ function! AllRubyTests()
 endfunction
 
 function! CurrentRubyTest()
-    return "spec/**/" . expand("%:t:r") . "_spec.rb"
+    let current_file = expand("%:t")
+    if current_file =~ '^.\+_spec.rb$'
+        return current_file
+    else
+        return "spec/**/" . expand("%:t:r") . "_spec.rb"
+    endif
 endfunction
 
 function! RspecCommand(fn)
