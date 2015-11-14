@@ -1,0 +1,33 @@
+" runpipe and send rspec colors documentation into the pipe silently
+
+function! AllPythonTests()
+    return ""
+endfunction
+
+function! CurrentPythonTest()
+    let current_file = expand("%:t")
+    if current_file =~ '^.\+_tests\?.py$'
+        return current_file
+    else
+        return expand("%:t:r") . "_tests.py"
+    endif
+endfunction
+
+function! NoseCommand(fn)
+    return "nosetests " . a:fn()
+endfunction
+
+function! RunNoseCommand(fn)
+    exec ":!" . NoseCommand(a:fn)
+endfunction
+
+function! PipeNoseCommand(fn)
+    let result = system("echo '" . NoseCommand(a:fn) . "' \>\> .pipe")
+    echom "sent command " . NoseCommand(a:fn) . " to .pipe"
+endfunction
+
+augroup python
+    autocmd!
+    autocmd FileType python map <leader>rt :call RunNoseCommand(function("CurrentPythonTest"))<cr>
+    autocmd FileType python map <leader>pt :call PipeNoseCommand(function("CurrentPythonTest"))<cr>
+augroup END
