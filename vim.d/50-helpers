@@ -1,0 +1,13 @@
+
+function! AllTests()
+    return ""
+endfunction
+
+function! RunCommand(command)
+    exec ":!" . a:command
+endfunction
+
+function! PipeCommand(command)
+    let result = system("echo '" . a:command . "' \>\> .pipe")
+    echom "sent command " . a:command . " to .pipe"
+endfunction
