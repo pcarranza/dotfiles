@@ -1,9 +1,5 @@
 " runpipe and send rspec colors documentation into the pipe silently
 
-function! AllRubyTests()
-    return ""
-endfunction
-
 function! CurrentRubyTest()
     let current_file = expand("%:t")
     if current_file =~ '^.\+_spec.rb$'
@@ -13,23 +9,14 @@ function! CurrentRubyTest()
     endif
 endfunction
 
-function! RspecCommand(fn)
-    return "rspec -c -f d " . a:fn()
-endfunction
-
-function! RunRspecCommand(fn)
-    exec ":!" . RspecCommand(a:fn)
-endfunction
-
-function! PipeRspecCommand(fn)
-    let result = system("echo '" . RspecCommand(a:fn) . "' \>\> .pipe")
-    echom "sent command " . RspecCommand(a:fn) . " to .pipe"
+function! RspecCommand(tests)
+    return "rspec -c -f d " . a:tests
 endfunction
 
 augroup ruby
     autocmd!
-    autocmd FileType ruby map <leader>rt :call RunRspecCommand(function("CurrentRubyTest"))<cr>
-    autocmd FileType ruby map <leader>rat :call RunRspecCommand(function("AllRubyTests"))<cr>
-    autocmd FileType ruby map <leader>pt :call PipeRspecCommand(function("CurrentRubyTest"))<cr>
-    autocmd FileType ruby map <leader>pat :call PipeRspecCommand(function("AllRubyTests"))<cr>
+    autocmd FileType ruby map <leader>rt :call RunCommand(RspecCommand(CurrentRubyTest()))<cr>
+    autocmd FileType ruby map <leader>pt :call PipeCommand(RspecCommand(CurrentRubyTest()))<cr>
+    autocmd FileType ruby map <leader>ra :call RunCommand(RspecCommand(AllTests()))<cr>
+    autocmd FileType ruby map <leader>pa :call PipeCommand(RspecCommand(AllTests()))<cr>
 augroup END
