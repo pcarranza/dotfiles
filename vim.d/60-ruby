@@ -3,7 +3,7 @@
 function! CurrentRubyTest()
     let current_file = expand("%:t")
     if current_file =~ '^.\+_spec.rb$'
-        return current_file
+        return "spec/**/" . current_file
     else
         return "spec/**/" . expand("%:t:r") . "_spec.rb"
     endif
