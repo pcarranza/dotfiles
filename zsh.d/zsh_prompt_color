@@ -1,0 +1,8 @@
+# PROMPT='%{$fg[black]%}%m %c%{$fg[white]%}$(git_prompt_info)$%{$fg[black]%} % %{$reset_color%}'
+# PROMPT='%{$fg[blue]%}%m %c%{$fg[white]%}$(git_prompt_info)$%{$fg[blue]%} % %{$reset_color%}'
+# PROMPT='%{$fg[cyan]%}%m %c%{$fg[white]%}$(git_prompt_info)$%{$fg[cyan]%} % %{$reset_color%}'
+# PROMPT='%{$fg[green]%}%m %c%{$fg[white]%}$(git_prompt_info)$%{$fg[green]%} % %{$reset_color%}'
+# PROMPT='%{$fg[red]%}%m %c%{$fg[white]%}$(git_prompt_info)$%{$fg[red]%} % %{$reset_color%}'
+# PROMPT='%{$fg[yellow]%}%m %c%{$fg[white]%}$(git_prompt_info)$%{$fg[yellow]%} % %{$reset_color%}'
+# PROMPT='%{$fg[magenta]%}%m %c%{$fg[white]%}$(git_prompt_info)$%{$fg[magenta]%} % %{$reset_color%}'
+# PROMPT='%{$fg[white]%}%m %c%{$fg[white]%}$(git_prompt_info)$%{$fg[white]%} % %{$reset_color%}'
