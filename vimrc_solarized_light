@@ -1,8 +1,6 @@
 " Tweaks for light background
 "
 " Based on Solazed colors
-"
-" Enable with cd ~ ; ln -s .dotfiles/vimrc_solarized_light .vimrc_extra
 
 " light background
 set background=light
@@ -12,6 +10,3 @@ colorscheme solarized
 
 " airline solarized
 let g:airline_theme="solarized"
-
-" Disable the cursor line
-hi CursorLine     term=none cterm=none guibg=bg guifg=fg
