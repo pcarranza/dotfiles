@@ -3,8 +3,8 @@
 *.orig
 *.rej
 *.pyc
-.vim/bundle/*
 .gitignore
 .pipe
 .coverage
+vim/*
 tags

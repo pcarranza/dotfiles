@@ -51,3 +51,5 @@
 	editor = /usr/bin/vim
 [push]
 	default = matching
+[rerere]
+	enabled = true
