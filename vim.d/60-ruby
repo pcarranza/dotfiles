@@ -20,3 +20,8 @@ augroup ruby
     autocmd FileType ruby map <leader>ra :call RunCommand(RspecCommand(AllTests()))<cr>
     autocmd FileType ruby map <leader>pa :call PipeCommand(RspecCommand(AllTests()))<cr>
 augroup END
+
+augroup remove_weird_chars
+    autocmd!
+    autocmd BufWritePre *.rb :silent! :%s/[^\x00-\x7F]//g
+augroup END
