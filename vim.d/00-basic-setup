@@ -36,7 +36,10 @@ set wildmode=longest,list
 set wildmenu
 
 " Things that any file autocomplete will ignore
-set wildignore+=*.so,*.swp,*.zip,*.pyc,
+set wildignore+=*.so
+set wildignore+=*.swp
+set wildignore+=*.zip
+set wildignore+=*.pyc
 set wildignore+=*/tmp/*
 set wildignore+=*/_site/*
 set wildignore+=*/deps/*
