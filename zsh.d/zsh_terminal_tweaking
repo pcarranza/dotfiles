@@ -1,4 +1,4 @@
 # Disable stty ctrl-s for vi/vim so we can use ctrl+s to write to files
-alias vi="stty stop '' -ixoff ; vi"
-alias vim="vi"
-ttyctl -f
+# alias vi="stty stop '' -ixoff ; vi"
+# alias vim="vi"
+# ttyctl -f
