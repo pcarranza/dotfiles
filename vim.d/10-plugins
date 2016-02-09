@@ -9,7 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mileszs/ack.vim'
 Plugin 'powerline/fonts'
