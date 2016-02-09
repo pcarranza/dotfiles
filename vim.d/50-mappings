@@ -72,4 +72,4 @@ map <leader>t :CtrlP<cr>
 " CTags binding
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>. :CtrlPTag<cr>
-nnoremap <leader>r. :silent :! ctags -R --exclude=.git --exclude=log --exclude=coverage *<cr>:redraw!<cr>
+nnoremap <leader>r. :silent :! ctags -R --exclude=.git --exclude=tmp --exclude=log --exclude=coverage *<cr>:redraw!<cr>
