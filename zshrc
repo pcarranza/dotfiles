@@ -17,8 +17,8 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="sammy"
 source $ZSH/oh-my-zsh.sh
 
-[[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
-[[ -f ~/.zsh_local ]] && source ~/.zsh_local
-
 # Source all the files that live in ~/.zsh.d
 [[ -d ~/.zsh.d ]] && for FILE in $(ls ~/.zsh.d); do source ~/.zsh.d/$FILE ; done
+
+[[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
+[[ -f ~/.zsh_local ]] && source ~/.zsh_local
