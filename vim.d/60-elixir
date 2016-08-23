@@ -1,0 +1,9 @@
+
+function! ElixirTests()
+    return "mix test"
+endfunction
+
+augroup elixir
+    autocmd!
+    autocmd FileType elixir map <leader>rt :call RunCommand(ElixirTests())<cr>
+augroup END
