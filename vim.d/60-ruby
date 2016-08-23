@@ -9,8 +9,8 @@ function! CurrentRubyTest()
     endif
 endfunction
 
-function! RspecCommand(fn)
-    return "bundle exec rspec -c -f d " . a:fn()
+function! RspecCommand(fun)
+    return "bundle exec rspec -c -f d " . a:fun()
 endfunction
 
 augroup ruby
