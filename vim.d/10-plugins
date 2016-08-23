@@ -21,6 +21,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'fatih/vim-go'
 
 syntax on
 filetype off
