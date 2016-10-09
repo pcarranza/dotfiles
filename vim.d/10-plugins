@@ -7,9 +7,6 @@ call vundle#rc()
 
 " let Vundle manage Vundle, required
 Bundle 'gmarik/vundle'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mileszs/ack.vim'
@@ -26,13 +23,6 @@ Plugin 'fatih/vim-go'
 syntax on
 filetype off
 filetype plugin indent on
-
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" AIRLINE
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_powerline_fonts = 1
-let g:airline_section_warning=""
-let g:airline#extensions#whitespace#enabled = 1
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRL P

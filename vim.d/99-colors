@@ -6,14 +6,27 @@ set t_Co=256
 set background=dark
 " colorscheme jellybeans
 " colorscheme dark-ruby
-colorscheme grb256
+" colorscheme grb256
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AIRLINE & Color Schemes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin 'flazz/vim-colorschemes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+
+" let g:airline_powerline_fonts = 1
+" let g:airline_section_warning=""
+" let g:airline#extensions#whitespace#enabled = 1
 
 " Disable the cursor line
-hi CursorLine     term=none cterm=none guibg=bg guifg=fg
+" hi CursorLine     term=none cterm=none guibg=bg guifg=fg
 
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'YorickPeterse/happy_hacking.vim'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fix spell checking colors
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
 hi clear SpellRare
