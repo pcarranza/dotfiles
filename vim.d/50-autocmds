@@ -50,13 +50,6 @@ augroup insertionFixes
     autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
 augroup END
 
-augroup windowSizes
-    autocmd!
-    autocmd WinEnter * let &winwidth = &columns * 7 / 10
-    autocmd WinEnter * let &winheight = &lines - 9
-    autocmd WinLeave * let &winheight = 5
-augroup END
-
 augroup numbers
     autocmd!
     autocmd WinEnter,VimEnter,BufRead,BufNewFile,BufNew * set relativenumber
