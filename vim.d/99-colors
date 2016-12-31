@@ -11,7 +11,7 @@ set background=dark
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AIRLINE & Color Schemes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin 'flazz/vim-colorschemes'
+Plugin 'flazz/vim-colorschemes'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 
@@ -21,8 +21,6 @@ set background=dark
 
 " Disable the cursor line
 " hi CursorLine     term=none cterm=none guibg=bg guifg=fg
-
-Plugin 'YorickPeterse/happy_hacking.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fix spell checking colors
