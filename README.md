@@ -41,3 +41,12 @@ Just create ~/.zsh_local or ~/.vimrc.local
 ## Where to get powerline fonts:
 
 https://github.com/powerline/fonts
+
+### Dynamic CD PATH
+
+To enable dynamic generation of CDPATH export the CDPATH_ROOT array variable
+before sourcing happens, this can be done by declaring it in the
+~/.zsh_preload file
+
+Ex:
+ export CDPATH_ROOT=("${HOME}/src/gitlab.com" "${HOME}/src/dev.gitlab.org")
