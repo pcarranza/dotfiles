@@ -1,5 +1,6 @@
 *.DS_Store
 *~
+.*
 *.orig
 *.rej
 *.pyc
@@ -9,3 +10,4 @@
 vim/*
 tags
 turbulence
+vendor
