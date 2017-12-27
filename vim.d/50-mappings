@@ -50,14 +50,6 @@ inoremap <c-s> <Esc>:wa<CR>
 nnoremap Q <nop>
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggling wrap, paste and numbers
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap <leader>w :set wrap!<cr>
-noremap <leader>p :set paste!<cr>
-noremap <leader>n :set number!<cr>
-
-
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Replace selected text
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
