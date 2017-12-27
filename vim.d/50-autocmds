@@ -55,3 +55,7 @@ augroup numbers
     autocmd WinEnter,VimEnter,BufRead,BufNewFile,BufNew * set relativenumber
     autocmd WinLeave,BufLeave * set norelativenumber
 augroup END
+
+augroup git
+    autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+augroup END
