@@ -15,3 +15,7 @@ endif
 " Disable autocmd injection
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set secure
+
+if !empty($SOLARIZED_TERM)
+  source ~/.dotfiles/vimrc_solarized_light
+endif
