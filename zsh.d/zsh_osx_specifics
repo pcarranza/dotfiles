@@ -3,3 +3,5 @@ export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 alias ctags="`brew --prefix`/bin/ctags"
+
+PROMPT_HOSTNAME="macbook"

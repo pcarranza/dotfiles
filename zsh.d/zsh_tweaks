@@ -21,3 +21,5 @@ zstyle ':predict' verbose true
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
+
+[[ -d /usr/local/share/zsh-completions ]] && export fpath=(/usr/local/share/zsh-completions $fpath)

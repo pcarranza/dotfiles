@@ -24,7 +24,6 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.zsh_local ]] && source ~/.zsh_local
 
 GIT_PROMPT_COLOR="green"
-PROMPT_HOSTNAME="macbook"
 if [[ ! -z $SOLARIZED_TERM ]] then
   PROMPT_COLOR="black"
 else
