@@ -7,3 +7,4 @@ alias vip="vi -c CtrlP"
 alias vi="vim"
 
 function regex { gawk 'match($0,/'$1'/, ary) {print ary['${2:-'0'}']}'; }
+function rm_merged_branches { git pull --prune ; git b --merged | grep -v master | xargs git b -d }
