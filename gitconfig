@@ -24,10 +24,6 @@
     # Divergence (commits we added and commits remote added)
     div = divergence
 
-    # Goodness (summary of diff lines added/removed/total)
-    gn = goodness
-    gnc = goodness --cached
-
     # Fancy logging.
     #   h = head
     #   hp = head with patch
@@ -42,8 +38,6 @@
     ra = !git r --all
     l = "!. ~/.githelpers && pretty_git_log"
     la = !git l --all
-    b = "!. ~/.githelpers && pretty_git_branch"
-    bs = "!. ~/.githelpers && pretty_git_branch_sorted"
     g = "!git log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\" | less -FXRS"
 
 [merge]
