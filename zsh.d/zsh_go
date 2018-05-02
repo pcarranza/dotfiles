@@ -1,4 +1,7 @@
 if [[ -f ~/.gopath ]]; then
   export GOPATH=$(cat ~/.gopath)
+fi
+
+if [[ ! -z "${GOPATH}" ]]; then
   export PATH=$PATH:$GOPATH/bin
 fi
