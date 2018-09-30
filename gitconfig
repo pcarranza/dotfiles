@@ -53,3 +53,5 @@
 
 [rerere]
 	enabled = true
+[fetch]
+	prune = true
