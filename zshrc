@@ -11,6 +11,9 @@ export UPDATE_ZSH_DAYS=90
 # much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Comment if you want to disable ssh agent loading
+export SSH_ENV=${HOME}/.ssh_env
+
 # plugins=(git)
 
 ZSH=$HOME/.oh-my-zsh
