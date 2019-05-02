@@ -5,6 +5,8 @@ export GREP_OPTIONS="--color"
 alias ctags="`brew --prefix`/bin/ctags"
 alias m='echo -e "\u001b[3;0;0t\u001b[8;500;500t"'
 
+alias ls="ls -G"
+
 alias disable_spotlight="sudo mdutil -a -i off"
 
 PROMPT_HOSTNAME="macbook"
