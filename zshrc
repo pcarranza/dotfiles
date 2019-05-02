@@ -6,6 +6,9 @@ DISABLE_AUTO_UPDATE="false"
 # Uncomment to change how often before auto-updates occur? (in days)
 export UPDATE_ZSH_DAYS=90
 
+# Force lang to be en_us in utf-8
+export LANG=en_us.utf-8
+
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,
 # much faster.
