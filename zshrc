@@ -35,5 +35,7 @@ if [[ ! -z $SOLARIZED_TERM ]] then
 else
   PROMPT_COLOR="white"
 fi
-# PROMPT='%{$fg[$PROMPT_COLOR]%}$PROMPT_HOSTNAME %c%{$fg[$GIT_PROMPT_COLOR]%}$(git_prompt_info)%{$fg[$PROMPT_COLOR]%}$ % %{$reset_color%}'
-PROMPT='%{$fg[$PROMPT_COLOR]%}%~%{$fg[$GIT_PROMPT_COLOR]%}$(git_prompt_info)%{$fg[$PROMPT_COLOR]%}$ % %{$reset_color%}'
+
+export PROMPT_PRE="%M"
+
+export PROMPT='%{$fg[$PROMPT_COLOR]%}${PROMPT_PRE} %c%{$fg[$GIT_PROMPT_COLOR]%}$(git_prompt_info)%{$fg[$PROMPT_COLOR]%}$ % %{$reset_color%}'
