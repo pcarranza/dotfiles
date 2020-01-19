@@ -36,7 +36,7 @@
     hp = "!. ~/.githelpers && show_git_head"
     r = !GIT_NO_PAGER=1 git l -15
     ra = !git r --all
-    l = "!. ~/.githelpers && pretty_git_log"
+    l = log --oneline --graph
     la = !git l --all
     g = "!git log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\" | less -FXRS"
     mr = push -o merge_request.create -o merge_request.target=master -o merge_request.remove_source_branch
