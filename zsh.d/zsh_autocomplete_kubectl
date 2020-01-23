@@ -1,0 +1,4 @@
+# Do nothing if kubectl is not installed
+command -v kubectl >/dev/null 2>&1 || { exit 0; }
+
+source <(kubectl completion zsh)
