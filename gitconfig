@@ -57,3 +57,6 @@
 	enabled = true
 [fetch]
 	prune = true
+
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
