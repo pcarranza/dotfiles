@@ -17,7 +17,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Comment if you want to disable ssh agent loading
 export SSH_ENV=${HOME}/.ssh_env
 
-# plugins=(git)
+plugins=(git autojump)
 
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="sammy"
