@@ -12,3 +12,5 @@ vim/*
 tags
 turbulence
 vendor
+*-amd64
+*-arm64
