@@ -15,7 +15,6 @@ ln -s .dotfiles/gitignore .gitignore
 ln -s .dotfiles/vim .vim
 ln -s .dotfiles/vim.d .vim.d
 ln -s .dotfiles/vimrc .vimrc
-ln -s .dotfiles/irbrc .irbrc
 ln -s .dotfiles/zshrc .zshrc
 ln -s .dotfiles/zsh.d .zsh.d
 ln -s .dotfiles/oh-my-zsh .oh-my-zsh

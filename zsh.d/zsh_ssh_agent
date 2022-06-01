@@ -1,5 +1,5 @@
 if [ -z "${SSH_ENV}" ]; then
-  exit 0
+  return
 fi
 
 function start_agent {
