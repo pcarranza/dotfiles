@@ -29,13 +29,6 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 [[ -f ~/.zsh_local ]] && source ~/.zsh_local
 
-GIT_PROMPT_COLOR="green"
-if [[ ! -z $SOLARIZED_TERM ]] then
-  PROMPT_COLOR="black"
-else
-  PROMPT_COLOR="white"
-fi
-
-export PROMPT_PRE="%M"
-
+export PROMPT_PRE="%m"
+export PROMPT_COLOR="black"
 export PROMPT='%{$fg[$PROMPT_COLOR]%}${PROMPT_PRE} %c%{$fg[$GIT_PROMPT_COLOR]%}$(git_prompt_info)%{$fg[$PROMPT_COLOR]%}$ % %{$reset_color%}'
