@@ -1,7 +1,6 @@
 [[ ! $OSTYPE == darwin* ]] && return
 
 if [[ -f /opt/homebrew/bin/brew ]]; then
-  echo "loading homebrew"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
