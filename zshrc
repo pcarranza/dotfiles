@@ -29,6 +29,6 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 [[ -f ~/.zsh_local ]] && source ~/.zsh_local
 
-export PROMPT_PRE="%m"
+export PROMPT_PRE="%n@%m"
 export PROMPT_COLOR="black"
 export PROMPT='%{$fg[$PROMPT_COLOR]%}${PROMPT_PRE} %c%{$fg[$GIT_PROMPT_COLOR]%}$(git_prompt_info)%{$fg[$PROMPT_COLOR]%}$ % %{$reset_color%}'
