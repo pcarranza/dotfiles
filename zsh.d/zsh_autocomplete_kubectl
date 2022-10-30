@@ -1,5 +1,5 @@
 # Only load if kubectl is installed
 
-command -v kubectl >/dev/null 2>&1 || return
+command -v kubectl >/dev/null 2>&1 || { echo "failed to load kubectl" ; return }
 
 source <(kubectl completion zsh)

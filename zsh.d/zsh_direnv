@@ -1,0 +1,6 @@
+# Only load if direnv is installed
+
+
+command -v direnv >/dev/null 2>&1 || { echo "failed to load direnv $?" ; return }
+
+eval "$(direnv hook zsh)"
