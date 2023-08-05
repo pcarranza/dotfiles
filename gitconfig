@@ -48,6 +48,7 @@
         -o merge_request.description=\"$2\" \
         origin $(git cb)' -
     skip = push -o ci.skip
+    pushy = "!export CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD) ; git push origin ${CURRENT_BRANCH}"
     
 [merge]
     tool = vimdiff
@@ -58,7 +59,7 @@
 	autocrlf = input
 
 [push]
-	default = matching
+	default = simple
 
 [rerere]
 	enabled = true
